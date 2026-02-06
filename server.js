@@ -214,19 +214,19 @@ app.post('/api/admin/logout', async (req, res) => {
 // ✏️ Update region (Admin API)
 app.put('/api/region/:id', auth, async (req, res) => {
     try {
-        const updatedRegion = await Region.findByIdAndUpdate(
+        const region = await Region.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
 
-        if (!updatedRegion) {
+        if (!region) {
             return res.status(404).json({ message: 'Region not found' });
         }
 
         res.json({
             message: 'Region updated successfully',
-            region: updatedRegion
+            region
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
