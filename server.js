@@ -6,6 +6,7 @@ const Admin = require('./models/Admin');
 const jwt = require('jsonwebtoken');
 const auth = require('./middleware/auth');
 const failover = require('./services/failover');
+const cors = require('cors');
 
 
 dotenv.config();
@@ -14,6 +15,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Import Model
 const Region = require('./models/Region');
